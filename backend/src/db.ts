@@ -14,6 +14,15 @@ if (process.env.CA_CERT) {
     fs.writeFileSync(caCertificatePath, process.env.CA_CERT);
 }
 
+if (!caCertificatePath) {
+    console.log("No caCertpath");
+    process.exit(1);
+}
+
+console.log(process.env.CA_CERT);
+console.log({ caCertificatePath });
+console.log(fs.readFileSync(caCertificatePath, "utf-8"));
+
 export const client = new mongodb.MongoClient(conn, {
     sslCA: caCertificatePath,
 });

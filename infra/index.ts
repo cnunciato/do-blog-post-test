@@ -77,11 +77,13 @@ const app = new digitalocean.App("app", {
                         key: "DATABASE_URL",
                         scope: "RUN_AND_BUILD_TIME",
                         value: "${db.DATABASE_URL}",
+                        type: "GENERAL",
                     },
                     {
                         key: "CA_CERT",
                         scope: "RUN_AND_BUILD_TIME",
                         value: "${db.CA_CERT}",
+                        type: "GENERAL",
                     },
                 ],
             },
