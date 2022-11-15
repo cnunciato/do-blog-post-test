@@ -83,7 +83,7 @@ const app = new digitalocean.App("app", {
                         key: "CA_CERT",
                         scope: "RUN_AND_BUILD_TIME",
                         value: "${db.CA_CERT}",
-                        type: "GENERAL",
+                        type: "SECRET",
                     },
                 ],
             },
