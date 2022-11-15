@@ -4,6 +4,7 @@ export const itemsRouter = express.Router();
 import { getItems, addItem, updateItem, deleteItem } from "./item";
 
 itemsRouter.get("/", async (req: Request, res: Response) => {
+    console.log(process.env);
     try {
         const items = await getItems();
         res.status(200).send(items);
