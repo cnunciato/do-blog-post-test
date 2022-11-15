@@ -8,6 +8,8 @@ if (!conn) {
     process.exit(1);
 }
 
+console.log(process.env);
+
 let caCertificatePath: string | undefined;
 if (process.env.CA_CERT) {
     caCertificatePath = path.resolve("./ca-certificate.crt")
