@@ -16,8 +16,6 @@ if (process.env.CA_CERT) {
 
 console.log(process.env);
 
-export const client = new mongodb.MongoClient(conn, {
-    sslCA: caCertificatePath,
-});
+export const client = new mongodb.MongoClient(conn);
 
 export const findByID = (id: string) => ({ _id: new bson.ObjectID(id) });

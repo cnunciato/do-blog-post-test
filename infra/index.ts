@@ -12,9 +12,9 @@ const region = digitalocean.Region.SFO3;
 // Our MongoDB cluster (currently just one node).
 const cluster = new digitalocean.DatabaseCluster("cluster", {
     engine: "mongodb",
-    version: "4",
+    version: "5",
     region,
-    size: digitalocean.DatabaseSlug.DB_2VPCU4GB,
+    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
     nodeCount: 1,
 });
 
@@ -22,7 +22,6 @@ const cluster = new digitalocean.DatabaseCluster("cluster", {
 const db = new digitalocean.DatabaseDb("db", {
     name: "grocery-list",
     clusterId: cluster.id,
-
 });
 
 // The App Platform spec that defines our grocery list.
@@ -75,12 +74,12 @@ const app = new digitalocean.App("app", {
                 envs: [
                     {
                         key: "DATABASE_URL",
-                        scope: "RUN_AND_BUILD_TIME",
+                        scope: "RUN_TIME",
                         value: "${db.DATABASE_URL}",
                     },
                     {
                         key: "CA_CERT",
-                        scope: "RUN_AND_BUILD_TIME",
+                        scope: "RUN_TIME",
                         value: "${db.CA_CERT}",
                     },
                 ],
